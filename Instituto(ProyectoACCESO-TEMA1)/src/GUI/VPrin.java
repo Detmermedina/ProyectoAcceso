@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 
 /**
@@ -16,6 +17,7 @@ public class VPrin extends JFrame{
 
     public VPrin(String nombre) {
         this.nombre = nombre;
+        setBackground(Color.yellow.darker().darker());
     }
     
     
