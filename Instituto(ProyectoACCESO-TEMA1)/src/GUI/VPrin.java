@@ -1,8 +1,5 @@
 package GUI;
-
 import data.*;
-
-
 
 import javax.swing.*;
 import java.awt.*;
@@ -55,8 +52,8 @@ public class VPrin extends JFrame {
         cambioDePaneles();
 
         // Añadir paneles al CardLayout con una clave
-        mainPanel.add(new PanAñadirCurso());
-       // mainPanel.add(new PañadirAsignaturas(), "Añadir Asignaturas");
+        //mainPanel.add(new PanAñadirCurso());
+        //mainPanel.add(new PanAñadirAsig());
        //mainPanel.add(new PañadirAlumnos(), "Añadir Alumnos");
        
        
@@ -68,8 +65,8 @@ public class VPrin extends JFrame {
            
             
             opciones.add(Opcion1);
-            opciones.add(Opcion3);
             opciones.add(Opcion2);
+            opciones.add(Opcion3);
             opciones.add(Opcion4);
             opciones.add(Opcion5);
             opciones.add(Opcion6);
@@ -92,7 +89,8 @@ public class VPrin extends JFrame {
         });
         Opcion2.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+            mainPanel.add(new PanAñadirAsig(insti), "Añadir Asignaturas"); // Pasa la instancia de Instituto
+            cardLayout.show(mainPanel, "Añadir Asignaturas"); // Muestra el panel correspondiente
         });
         
         Opcion3.addActionListener((ActionEvent e) -> {

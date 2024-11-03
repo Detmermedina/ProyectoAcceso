@@ -13,6 +13,12 @@ public class Instituto {
         this.nombre = nombre;
     }
 
+    public Map<Integer, Cursos> getCursosMap() {
+        return cursosMap;
+    }
+    
+    
+    
     // Añadir curso
     public void agregarCurso() {
 
@@ -60,6 +66,8 @@ public class Instituto {
 
     // Mostrar información del curso (incluye alumnos y asignaturas)
     public void mostrarInfoCurso(int idCurso) {
+        
+        
         Cursos curso = cursosMap.get(idCurso);
         if (curso == null) {
             JOptionPane.showMessageDialog(null, "No se encontró un curso con el ID " + idCurso, "Error", JOptionPane.ERROR_MESSAGE);
