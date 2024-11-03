@@ -1,7 +1,6 @@
 package data;
 
-import GUI.VentanaPrincipal;
-
+import GUI.*;
 /**
  *
  * @author damtv
@@ -13,7 +12,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        VentanaPrincipal p1 = new VentanaPrincipal();
+        VPrin p1 = new VPrin();
         
         //asdkasdlajksdlasjdlasjkdklasdjaslkdasjkld
         p1.setVisible(true);
