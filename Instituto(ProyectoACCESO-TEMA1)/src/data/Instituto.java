@@ -8,6 +8,7 @@ import java.util.TreeMap;
 public class Instituto {
     private String nombre;
     private Map<Integer, Cursos> cursosMap = new TreeMap<>();
+    private Map<String, Alumnos> MatriAlum = new TreeMap<>();
 
     public Instituto(String nombre) {
         this.nombre = nombre;
@@ -30,8 +31,14 @@ public class Instituto {
     }
 
     // Matricular alumno en curso
-    public void matricularAlumno() {
-
+    public void matricularAlumno(Alumnos alumno) {
+        
+        
+        MatriAlum.put(alumno.getDni(), alumno);
+        
+        
+        /*
+        
         String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
         Integer idCursoInt = Integer.parseInt(idCurso);
         String dni = JOptionPane.showInputDialog("Introduce el DNI del alumno a matricular");
@@ -44,25 +51,10 @@ public class Instituto {
         } else {
             JOptionPane.showMessageDialog(null, "El curso con ID " + idCurso + " no existe.");
         }
-    }
-
-    // Añadir asignatura a curso
-    public void añadirAsignatura() {
-
-        String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
-        Integer idCursoInt = Integer.parseInt(idCurso);
-        String idAsignatura = JOptionPane.showInputDialog("Introduce el ID de la asignatura");
-        Integer idAsignaturaInt = Integer.parseInt(idAsignatura);
-        String nombreAsignatura = JOptionPane.showInputDialog("Introduce el nombre de la asignatura a añadir");
         
-        Cursos curso = cursosMap.get(idCurso);
-        if (curso != null) {
-            curso.agregarAsignatura(new Asignaturas(nombreAsignatura, idAsignaturaInt, idCursoInt));
-            JOptionPane.showMessageDialog(null, "Asignatura añadida correctamente a " + curso);
-        } else {
-            JOptionPane.showMessageDialog(null, "El curso con ID " + idCurso + " no existe.");
-        }
+        */
     }
+
 
     // Mostrar información del curso (incluye alumnos y asignaturas)
     public void mostrarInfoCurso(int idCurso) {

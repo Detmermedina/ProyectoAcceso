@@ -14,6 +14,7 @@ public class Alumnos {
         this.nombre = nombre;
         this.idCurso = idCurso;
     }
+    
 
     public String getDni() { return dni; }
     public String getNombre() { return nombre; }

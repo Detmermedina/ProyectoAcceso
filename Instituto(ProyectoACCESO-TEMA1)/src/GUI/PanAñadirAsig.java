@@ -38,7 +38,8 @@ public class PanAñadirAsig extends JPanel {
         buttonAgregar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                añadirAsignatura();
+               añadirAsignatura();
+               
             }
         });
         add(buttonAgregar);
