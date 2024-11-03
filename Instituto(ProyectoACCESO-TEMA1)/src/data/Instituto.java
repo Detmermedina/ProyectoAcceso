@@ -14,26 +14,44 @@ public class Instituto {
     }
 
     // Añadir curso
-    public void agregarCurso(int idCurso, String nombreCurso) {
-        cursosMap.put(idCurso, new Cursos(nombreCurso));
+    public void agregarCurso() {
+
+        String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
+        Integer idCursoInt = Integer.parseInt(idCurso);
+        String nombreCurso = JOptionPane.showInputDialog("Introduce el nombre del curso a añadir");
+
+        cursosMap.put(idCursoInt, new Cursos(nombreCurso));
     }
 
     // Matricular alumno en curso
-    public void matricularAlumno(int idCurso, String dni, String nombreAlumno) {
+    public void matricularAlumno() {
+
+        String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
+        Integer idCursoInt = Integer.parseInt(idCurso);
+        String dni = JOptionPane.showInputDialog("Introduce el DNI del alumno a matricular");
+        String nombreAlumno = JOptionPane.showInputDialog("Introduce el nombre del alumno a matricular");
+
         Cursos curso = cursosMap.get(idCurso);
         if (curso != null) {
-            curso.agregarAlumno(new Alumnos(dni, nombreAlumno, idCurso));
+            curso.agregarAlumno(new Alumnos(dni, nombreAlumno, idCursoInt));
             JOptionPane.showMessageDialog(null, "Alumno matriculado correctamente en " + curso);
         } else {
             JOptionPane.showMessageDialog(null, "El curso con ID " + idCurso + " no existe.");
         }
     }
 
-    // Asignar asignatura a curso
-    public void asignarAsignatura(int idCurso, int idAsignatura, String nombreAsignatura) {
+    // Añadir asignatura a curso
+    public void añadirAsignatura() {
+
+        String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
+        Integer idCursoInt = Integer.parseInt(idCurso);
+        String idAsignatura = JOptionPane.showInputDialog("Introduce el ID de la asignatura");
+        Integer idAsignaturaInt = Integer.parseInt(idAsignatura);
+        String nombreAsignatura = JOptionPane.showInputDialog("Introduce el nombre de la asignatura a añadir");
+        
         Cursos curso = cursosMap.get(idCurso);
         if (curso != null) {
-            curso.agregarAsignatura(new Asignaturas(nombreAsignatura, idAsignatura, idCurso));
+            curso.agregarAsignatura(new Asignaturas(nombreAsignatura, idAsignaturaInt, idCursoInt));
             JOptionPane.showMessageDialog(null, "Asignatura añadida correctamente a " + curso);
         } else {
             JOptionPane.showMessageDialog(null, "El curso con ID " + idCurso + " no existe.");
@@ -63,8 +81,9 @@ public class Instituto {
         JOptionPane.showMessageDialog(null, mensaje.toString(), "Información del Curso", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    // Ejemplo de carga de datos de prueba
-    public void datosPrueba() {
+    //* Ejemplo de carga de datos de prueba
+    /*public void datosPrueba() {
+
         agregarCurso(101, "1 DAM");
         agregarCurso(102, "2 DAM");
 
@@ -72,7 +91,7 @@ public class Instituto {
         matricularAlumno(101, "12345679G", "Delmer");
         matricularAlumno(102, "12345677G", "Ruben");
 
-        asignarAsignatura(101, 1, "Programación de Sistemas");
-        asignarAsignatura(102, 2, "Acceso a Datos");
-    }
+        añadirAsignatura(101, 1, "Programación de Sistemas");
+        añadirAsignatura(102, 2, "Acceso a Datos");
+    }*/
 }
