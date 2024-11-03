@@ -64,6 +64,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         MenuPrin = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +80,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 386, Short.MAX_VALUE)
         );
+
+        jMenu2.setText("Edit");
+        MenuPrin.add(jMenu2);
 
         setJMenuBar(MenuPrin);
 
@@ -133,6 +137,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuPrin;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 }
