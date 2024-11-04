@@ -1,6 +1,8 @@
 package data;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
 import java.util.Map;
 import java.util.TreeMap;
@@ -9,6 +11,7 @@ public class Instituto {
     private String nombre;
     private Map<Integer, Cursos> cursosMap = new TreeMap<>();
     private Map<String, Alumnos> MatriAlum = new TreeMap<>();
+    private Map<String, Asignaturas> asigMap = new TreeMap<>();
 
     public Instituto(String nombre) {
         this.nombre = nombre;
@@ -21,13 +24,17 @@ public class Instituto {
     
     
     // Añadir curso
-    public void agregarCurso() {
-
+    public void agregarCurso(int idCursoInt, Cursos curso) {
+        
+        cursosMap.put(idCursoInt, curso);
+        
+        /*
         String idCurso = JOptionPane.showInputDialog("Introduce el ID de este curso");
         Integer idCursoInt = Integer.parseInt(idCurso);
         String nombreCurso = JOptionPane.showInputDialog("Introduce el nombre del curso a añadir");
 
         cursosMap.put(idCursoInt, new Cursos(nombreCurso));
+        */
     }
 
     // Matricular alumno en curso
@@ -58,7 +65,7 @@ public class Instituto {
 
     // Mostrar información del curso (incluye alumnos y asignaturas)
     public void mostrarInfoCurso(int idCurso) {
-        
+        List<Cursos> mostrarInf = new ArrayList<>();
         
         Cursos curso = cursosMap.get(idCurso);
         if (curso == null) {
@@ -70,19 +77,24 @@ public class Instituto {
         mensaje.append(curso).append("\n\nAlumnos:\n");
 
         for (Alumnos alumno : curso.getAlumnosMap().values()) {
+            
             mensaje.append(alumno).append("\n");
         }
 
         mensaje.append("\nAsignaturas:\n");
         for (Asignaturas asignatura : curso.getAsignaturasMap().values()) {
+            
             mensaje.append(asignatura).append("\n");
         }
+      
+     
 
         JOptionPane.showMessageDialog(null, mensaje.toString(), "Información del Curso", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    //* Ejemplo de carga de datos de prueba
-    /*public void datosPrueba() {
+    // Ejemplo de carga de datos de prueba
+    /*
+    public void datosPrueba() {
 
         agregarCurso(101, "1 DAM");
         agregarCurso(102, "2 DAM");

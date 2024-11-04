@@ -1,26 +1,64 @@
 package GUI;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import data.Cursos;
+import data.Instituto;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-/**
- *
- * @author damtv
- */
-public class PanAñadirCurso extends JPanel{
-    
-    
-    public PanAñadirCurso() {
+public class PanAñadirCurso extends JPanel {
+    private JTextField idCursoField;
+    private JTextField nombreCursoField;
+    private JButton buttonAgregar;
+    private Instituto instituto;
+
+    public PanAñadirCurso(Instituto instituto) {
+        this.instituto = instituto;
+
+        setLayout(new GridLayout(3, 2, 10, 10));
         setBackground(Color.CYAN);
-        setLayout(new BorderLayout());
 
-        
-        JLabel label = new JLabel("Añadir Curso", SwingConstants.CENTER);
-        label.setFont(new Font("Arial", Font.BOLD, 20));
-        add(label, BorderLayout.CENTER);    
+        // Etiqueta y campo para ID del curso
+        add(new JLabel("ID del Curso:", SwingConstants.RIGHT));
+        idCursoField = new JTextField();
+        add(idCursoField);
+
+        // Etiqueta y campo para Nombre del curso
+        add(new JLabel("Nombre del Curso:", SwingConstants.RIGHT));
+        nombreCursoField = new JTextField();
+        add(nombreCursoField);
+
+        botones();
+    }
+    
+    public void botones(){
+    
+       // Botón para añadir el curso
+        buttonAgregar = new JButton("Agregar Curso");
+        buttonAgregar.setBackground(Color.BLUE.brighter());
+        buttonAgregar.setForeground(Color.WHITE);
+        buttonAgregar.setFont(new Font("Arial", Font.BOLD, 14));
+        buttonAgregar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                agregarCurso();
+            }
+        });
+        add(new JLabel()); // Espacio vacío
+        add(buttonAgregar);
+  
+    
+    }
+
+    private void agregarCurso() {
+        try {
+            int idCurso = Integer.parseInt(idCursoField.getText());
+            String nombreCurso = nombreCursoField.getText();
+            instituto.agregarCurso(idCurso, new Cursos(nombreCurso));
+            JOptionPane.showMessageDialog(this, "Curso añadido correctamente.");
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(this, "Por favor, introduce un ID válido.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

@@ -17,7 +17,7 @@ public class VPrin extends JFrame {
     private List<JMenuItem> opciones = new ArrayList<>();
         private final JMenuItem Opcion1 = new JMenuItem("Añadir Curso");
         private final JMenuItem Opcion2 = new JMenuItem("Añadir Asignaturas");
-        private final JMenuItem Opcion3 = new JMenuItem("Añadir Asignaturas");
+        private final JMenuItem Opcion3 = new JMenuItem("Informacion de Curso");
         private final JMenuItem Opcion4 = new JMenuItem("Añadir Asignaturas");
         private final JMenuItem Opcion5 = new JMenuItem("Añadir Asignaturas");
         private final JMenuItem Opcion6 = new JMenuItem("Añadir Asignaturas");
@@ -29,10 +29,11 @@ public class VPrin extends JFrame {
     private CardLayout cardLayout;
 
     public VPrin() {
+        setSize(1000, 600);
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(800, 600);
+        
     }
 
     private void initComponents() {
@@ -85,7 +86,9 @@ public class VPrin extends JFrame {
     
         Opcion1.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+            mainPanel.add(new PanAñadirCurso(insti), "Añadir Curso"); // Pasa la instancia de Instituto
+            cardLayout.show(mainPanel, "Añadir Curso"); // Muestra el panel correspondiente    
+            
         });
         Opcion2.addActionListener((ActionEvent e) -> {
             
@@ -95,22 +98,25 @@ public class VPrin extends JFrame {
         
         Opcion3.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+            mainPanel.add(new PanMostrarInfoCurso(insti), "Mostrar Informacion de Curso"); // Pasa la instancia de Instituto
+            cardLayout.show(mainPanel, "Mostrar Informacion de Curso"); // Muestra el panel correspondiente
+            
+               // insti.agregarCurso();
         });
         
         Opcion4.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+                //insti.agregarCurso();
         });
         
         Opcion5.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+                //insti.agregarCurso();
         });
         
         Opcion6.addActionListener((ActionEvent e) -> {
             
-                insti.agregarCurso();
+                //insti.agregarCurso();
         });
         
         
