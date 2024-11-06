@@ -17,10 +17,10 @@ public class VPrin extends JFrame {
     private List<JMenuItem> opciones = new ArrayList<>();
         private final JMenuItem Opcion1 = new JMenuItem("Añadir Curso");
         private final JMenuItem Opcion2 = new JMenuItem("Añadir Asignaturas");
-        private final JMenuItem Opcion3 = new JMenuItem("Informacion de Curso");
-        private final JMenuItem Opcion4 = new JMenuItem("Añadir Asignaturas");
-        private final JMenuItem Opcion5 = new JMenuItem("Añadir Asignaturas");
-        private final JMenuItem Opcion6 = new JMenuItem("Añadir Asignaturas");
+        private final JMenuItem Opcion3 = new JMenuItem("Añadir Alumnos");
+        private final JMenuItem Opcion4 = new JMenuItem("Informacion de Alumno");
+        private final JMenuItem Opcion5 = new JMenuItem("Informacion de Curso");
+        private final JMenuItem Opcion6 = new JMenuItem("Informacion de Cursos");
     
     
     
@@ -41,6 +41,13 @@ public class VPrin extends JFrame {
         menuBar = new JMenuBar();
         mainPanel = new JPanel();
         cardLayout = new CardLayout();
+        
+        /*
+        
+            PanelPrincipalFondo panBienvenida = new PanelPrincipalFondo(insti, "ruta/de/la/imagen.jpg");
+            mainPanel.add(panBienvenida, "Bienvenida"); // Agregar al panel principal de CardLayout
+            cardLayout.show(mainPanel, "Bienvenida");   // Mostrar el panel de bienvenida
+        */
               
         setJMenuBar(menuBar);
         
@@ -97,26 +104,36 @@ public class VPrin extends JFrame {
         });
         
         Opcion3.addActionListener((ActionEvent e) -> {
+                mainPanel.add(new PanAñadirAlumn(insti), "Añadir Alumno"); // Pasa la instancia de Instituto
+            cardLayout.show(mainPanel, "Añadir Alumno"); // Muestra el panel correspondiente
+        });
+        
+        
+          
+        
+        Opcion4.addActionListener((ActionEvent e) -> {
+            
+              //INFORMACION DE ALUMNOS      
+            mainPanel.add(new PanInfoAlumno(insti), "Mostrar Informacion de Alumno"); // Pasa la instancia de Instituto
+            cardLayout.show(mainPanel, "Mostrar Informacion de Alumno"); // Muestra el panel correspondiente
+            
+     
+        });
+        
+       
+        
+        Opcion5.addActionListener((ActionEvent e) -> {
             
             mainPanel.add(new PanMostrarInfoCurso(insti), "Mostrar Informacion de Curso"); // Pasa la instancia de Instituto
             cardLayout.show(mainPanel, "Mostrar Informacion de Curso"); // Muestra el panel correspondiente
             
-               // insti.agregarCurso();
+               
         });
         
-        Opcion4.addActionListener((ActionEvent e) -> {
-            
-                //insti.agregarCurso();
-        });
         
-        Opcion5.addActionListener((ActionEvent e) -> {
-            
-                //insti.agregarCurso();
-        });
-        
-        Opcion6.addActionListener((ActionEvent e) -> {
-            
-                //insti.agregarCurso();
+      Opcion6.addActionListener((ActionEvent e) -> {
+            mainPanel.add(new PanMostrarInfoCursos(insti), "Mostrar toda Info Cursos"); // Usa el mismo nombre en ambas partes
+            cardLayout.show(mainPanel, "Mostrar toda Info Cursos"); // Usa el mismo nombre aquí
         });
         
         

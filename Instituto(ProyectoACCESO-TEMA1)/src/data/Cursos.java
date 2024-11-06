@@ -22,9 +22,8 @@ public class Cursos {
 
     // Agregar asignatura al curso
     public void agregarAsignatura(Asignaturas asignatura) {
-        asignaturasMap.put(asignatura.getIdCurso(), asignatura);
+        asignaturasMap.put(asignatura.getIdAsignatura(), asignatura); // Asegúrate de usar el ID correcto
     }
-
     // Obtener alumnos
     public Map<String, Alumnos> getAlumnosMap() {
         return alumnosMap;

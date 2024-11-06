@@ -18,6 +18,11 @@ public class Asignaturas {
     public int getIdCurso() { return idCurso; }
     public String getNombre() { return nombre; }
 
+    public int getIdAsignatura() {
+        return idAsignatura;
+    }
+    
+
     @Override
     public String toString() {
         return "Asignatura: " + nombre + " (ID: " + idAsignatura + ")";
