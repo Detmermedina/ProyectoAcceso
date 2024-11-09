@@ -15,6 +15,10 @@ public class Cursos {
         this.nombre = nombre;
     }
 
+    public Cursos() {
+    }
+    
+
     // Agregar alumno al curso
     public void agregarAlumno(Alumnos alumno) {
         alumnosMap.put(alumno.getDni(), alumno);

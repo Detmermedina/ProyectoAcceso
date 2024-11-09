@@ -5,12 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class VPrin extends JFrame {
-    
     
     private Instituto insti = new Instituto("PALOMERAS");
 
@@ -28,50 +29,46 @@ public class VPrin extends JFrame {
     private JPanel mainPanel;
     private CardLayout cardLayout;
 
-    public VPrin() {
-        setSize(1000, 600);
+    public VPrin(String title) throws HeadlessException {
+        super(title);
+
+        setSize(1000, 600);  // Establece el tamaño inicial de la ventana
+        setMinimumSize(new Dimension(1000, 600));  // Establece el tamaño mínimo
+        setResizable(false);  // Evita que la ventana se pueda redimensionar
+        
+        insti.datosPrueba(); 
+        
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
     }
+    
 
     private void initComponents() {
+         
         // Crear el menú y el panel principal con CardLayout
         menuBar = new JMenuBar();
         mainPanel = new JPanel();
         cardLayout = new CardLayout();
-        
-        /*
-        
-            PanelPrincipalFondo panBienvenida = new PanelPrincipalFondo(insti, "ruta/de/la/imagen.jpg");
-            mainPanel.add(panBienvenida, "Bienvenida"); // Agregar al panel principal de CardLayout
-            cardLayout.show(mainPanel, "Bienvenida");   // Mostrar el panel de bienvenida
-        */
-              
+         
         setJMenuBar(menuBar);
-        
-
         mainPanel.setLayout(cardLayout);
+        
+        PanelPrincipalFondo panBienvenida = new PanelPrincipalFondo(insti, ".//img//InstitutoFondo.jpg");
+        mainPanel.add(panBienvenida, "Bienvenida"); // Agregar al panel principal de CardLayout
+        cardLayout.show(mainPanel, "Bienvenida");   // Mostrar el panel de bienvenida
 
         // Añadir el mainPanel al JFrame
         add(mainPanel, BorderLayout.CENTER);
         
         cambioDePaneles();
-
-        // Añadir paneles al CardLayout con una clave
-        //mainPanel.add(new PanAñadirCurso());
-        //mainPanel.add(new PanAñadirAsig());
-       //mainPanel.add(new PañadirAlumnos(), "Añadir Alumnos");
-       
-       
         OpcionesMenu();
    
     }
     public void OpcionesMenu() {
             // Personalizar el color y apariencia de cada opción del menú
-           
-            
+
             opciones.add(Opcion1);
             opciones.add(Opcion2);
             opciones.add(Opcion3);
@@ -79,14 +76,27 @@ public class VPrin extends JFrame {
             opciones.add(Opcion5);
             opciones.add(Opcion6);
 
-            for (JMenuItem item : opciones) {
+        for (JMenuItem item : opciones) {
                 item.setBackground(Color.BLUE.brighter().brighter());
                 item.setForeground(Color.WHITE);
                 item.setFont(new Font("Arial", Font.BOLD, 12));
                 // Agregar el item al menú principal (MenuPrin)
-                menuBar.add(item);
                 
-            }
+                
+            
+            // Efecto de hover
+            item.addMouseListener(new MouseAdapter() {
+                public void mouseEntered(MouseEvent evt) {
+                    item.setBackground(new Color(33, 150, 243)); // Azul oscuro
+                }
+                public void mouseExited(MouseEvent evt) {
+                    item.setBackground(new Color(66, 133, 244)); // Regresa al color original
+                }
+            });
+            menuBar.add(item);
+        }
+
+            
         }
     
     public void cambioDePaneles(){
@@ -107,10 +117,7 @@ public class VPrin extends JFrame {
                 mainPanel.add(new PanAñadirAlumn(insti), "Añadir Alumno"); // Pasa la instancia de Instituto
             cardLayout.show(mainPanel, "Añadir Alumno"); // Muestra el panel correspondiente
         });
-        
-        
-          
-        
+
         Opcion4.addActionListener((ActionEvent e) -> {
             
               //INFORMACION DE ALUMNOS      
@@ -119,9 +126,7 @@ public class VPrin extends JFrame {
             
      
         });
-        
-       
-        
+
         Opcion5.addActionListener((ActionEvent e) -> {
             
             mainPanel.add(new PanMostrarInfoCurso(insti), "Mostrar Informacion de Curso"); // Pasa la instancia de Instituto

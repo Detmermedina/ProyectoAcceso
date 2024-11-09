@@ -17,16 +17,17 @@ public class PanelPrincipalFondo extends JPanel {
         setLayout(new BorderLayout());
         
         // Texto de bienvenida con el nombre del instituto
-        JLabel welcomeLabel = new JLabel("Bienvenido al " + instituto.getNombre(), SwingConstants.CENTER);
-        welcomeLabel.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 36));
-        welcomeLabel.setForeground(Color.WHITE); // Texto en blanco para destacar
-        welcomeLabel.setOpaque(false);
+        JLabel bienvenida = new JLabel("Bienvenido al instituto IES PALOMERAS VALLE DEL KAS", SwingConstants.CENTER);
+     
+        bienvenida.setFont(new Font("Serif", Font.BOLD | Font.ITALIC, 36));
+        bienvenida.setForeground(Color.BLUE.darker().darker()); // Texto en blanco para destacar
+        bienvenida.setOpaque(true);
         
         // Agregar algo de sombra o borde al texto
-        welcomeLabel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        bienvenida.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
         // Añade el texto de bienvenida al centro del panel
-        add(welcomeLabel, BorderLayout.CENTER);
+        add(bienvenida, BorderLayout.NORTH);
     }
 
     @Override

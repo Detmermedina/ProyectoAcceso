@@ -16,9 +16,19 @@ public class Instituto {
         this.nombre = nombre;
     }
 
+    public Instituto() {
+    }
+    
+    //--------Getters y Setters------//
+
     public String getNombre() {
         return nombre;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
    
 
     public Map<Integer, Cursos> getCursosMap() {
@@ -28,7 +38,9 @@ public class Instituto {
     public Map<String, Alumnos> getMatriAlum() {
         return MatriAlum;
     }
+
     
+    //--------Fin Getters y Setters------//
     
     
     // Añadir curso
@@ -69,6 +81,9 @@ public String infoAlumno(String dniA){
            .append("\n\nCursos en los que está matriculado:\n");
 
     // Recorrer los cursos para buscar el alumno y sus asignaturas
+
+    
+
     for (Cursos curso : cursosMap.values()) {
         if (curso.getAlumnosMap().containsKey(dniA)) { // Verifica si el alumno está en el curso
             mensaje.append(curso.toString()).append("\n"); // Agrega información del curso
@@ -80,7 +95,7 @@ public String infoAlumno(String dniA){
             }
         }
     }
-
+    
     return mensaje.toString();
 }   
     
@@ -143,17 +158,34 @@ public String mostrarInfoCursos() {
 }
 
     // Ejemplo de carga de datos de prueba
-    /*
-    public void datosPrueba() {
+public void datosPrueba() {
+    // Crear algunos cursos y asignarlos al TreeMap de cursos
+    Cursos curso1 = new Cursos("1 DAM");
+    Cursos curso2 = new Cursos("2 DAM");
+    agregarCurso(101, curso1);
+    agregarCurso(102, curso2);
 
-        agregarCurso(101, "1 DAM");
-        agregarCurso(102, "2 DAM");
+    // Crear y matricular algunos alumnos en los cursos
+    Alumnos alumno1 = new Alumnos("12345678G", "Joselito", 101);
+    Alumnos alumno2 = new Alumnos("12345679G", "Delmer", 101);
+    Alumnos alumno3 = new Alumnos("12345677G", "Ruben", 102);
 
-        matricularAlumno(101, "12345678G", "Joselito");
-        matricularAlumno(101, "12345679G", "Delmer");
-        matricularAlumno(102, "12345677G", "Ruben");
+    // Agregar alumnos al TreeMap MatriAlum y a cada curso correspondiente
+    matricularAlumno(101, alumno1);
+    matricularAlumno(101, alumno2);
+    matricularAlumno(102, alumno3);
 
-        añadirAsignatura(101, 1, "Programación de Sistemas");
-        añadirAsignatura(102, 2, "Acceso a Datos");
-    }*/
+    // Crear asignaturas con idAsignatura y idCurso
+    Asignaturas asignatura1 = new Asignaturas("Programación de Sistemas", 1, 101);
+    Asignaturas asignatura2 = new Asignaturas("Acceso a Datos", 2, 102);
+
+    // Agregar asignaturas a los cursos en el TreeMap cursosMap
+    agregarAsignatura(101, asignatura1);
+    agregarAsignatura(102, asignatura2);
+}
+
+
+
+
+
 }
